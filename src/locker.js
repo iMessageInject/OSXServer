@@ -16,7 +16,7 @@ module.exports.lock = (remoteAddress) => {
 }
 module.exports.updateLock = () => lockData.time.lastReport = Date.getTime()
 module.exports.getLockData = () => lockData
-module.exports.isLocked = () => lockData === undefined
+module.exports.isLocked = () => lockData !== undefined
 
 function checkTimeout() {
     const reportTimeDiff = Date.getTime() - lockData.time.lastReport

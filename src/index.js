@@ -31,15 +31,11 @@ server.post("/lock", (request, result) => {
 const safeRouter = server.Router()
 safeRouter.use((request, result, next) => {
     if(locker.isLocked()) {
-        if(locker.getLockData().address == request.connection.remoteAddress) {
-            locker.updateLock()
-            next()
-        } else result.status(401).send("Server locked.")
+        if(locker.getLockData().address == request.connection.remoteAddress) next()
+        else result.status(401).send("Server locked.")
     } else result.status(503).send("Please lock before using this endpoint.")
 })
 safeRouter.post("/send", (request, result) => {
 
 })
-safeRouter.get("/contacts", (request, result) => {
-
-})
+safeRouter.get("/contacts", (request, result) => result.json(contacts))
