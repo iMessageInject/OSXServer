@@ -1,0 +1,19 @@
+{
+  "name": "osxserver",
+  "version": "1.0.0",
+  "description": "Message handler to run on an OSX machine connected to iMessage",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iMessageInject/OSXServer.git"
+  },
+  "author": "Wesley Smith",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/iMessageInject/OSXServer/issues"
+  },
+  "homepage": "https://github.com/iMessageInject/OSXServer#readme"
+}
