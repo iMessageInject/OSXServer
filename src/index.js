@@ -2,6 +2,8 @@
 
 const server = require("express")()
 const args = require("minimist")(process.argv.slice(2))
+const os = require("os")
+const cmd = require("node-cmd")
 const icloud = require("icloud")()
 const locker = require("./locker")
 
@@ -36,6 +38,11 @@ safeRouter.use((request, result, next) => {
     } else result.status(503).send("Please lock before using this endpoint.")
 })
 safeRouter.post("/send", (request, result) => {
-
+    const message = request.query.message
+    const number = request.query.number
+    if(message && number) {
+        cmd("osascript " + __dirname + "/../messages.applescript ")
+        result.status(200).send("Message sent")
+    } else result.status(400).send("Message or number not supplied.")
 })
 safeRouter.get("/contacts", (request, result) => result.json(contacts))
