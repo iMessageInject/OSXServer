@@ -41,7 +41,7 @@ safeRouter.post("/send", (request, result) => {
     const message = request.query.message
     const number = request.query.number
     if(message && number) {
-        cmd("osascript " + __dirname + "/../messages.applescript ")
+        cmd("osascript " + __dirname + "/../messages.applescript " + message + " " + number)
         result.status(200).send("Message sent")
     } else result.status(400).send("Message or number not supplied.")
 })
